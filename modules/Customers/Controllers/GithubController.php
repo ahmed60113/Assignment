@@ -8,6 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Modules\BaseController;
+use Spatie\Permission\Models\Role;
 
 class GithubController extends BaseController
 {
@@ -26,6 +27,7 @@ class GithubController extends BaseController
             Auth::login($githubId);
             return redirect('/dashboard');
         } else {
+            $role = Role::where('name','customer')->first();
             $createUser = customer::create([
                 'name' => $user->name,
                 'email' => $user->email,
@@ -33,6 +35,7 @@ class GithubController extends BaseController
                 'password' => encrypt('john123')
             ]);
 
+            $createUser->assignRole($role);
             Auth::login($createUser);
             return redirect('/');
         }

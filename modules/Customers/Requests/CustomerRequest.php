@@ -28,8 +28,8 @@ class CustomerRequest extends FormRequest
                 break;
             case 'updateProfile' :
                 return [
-                    'name' => 'required|unique:users,name,'.Auth::guard('admin')->user()->id,
-                    'email' => 'required|unique:users,email,'.Auth::guard('admin')->user()->id,
+                    'name' => 'required|unique:customers,name,'.Auth::guard('customer')->user()->id,
+                    'email' => 'required|unique:customers,email,'.Auth::guard('customer')->user()->id,
                     'password' => 'required|min:6',
                 ];
                 break;
@@ -37,8 +37,8 @@ class CustomerRequest extends FormRequest
             default :
             return
             [
-                'name' => 'required|unique:users,name,'.$this->admin->id,
-                'email' => 'required|unique:users,email,'.$this->admin->id,
+                'name' => 'required|unique:customers,name,'.$this->customer->id,
+                'email' => 'required|unique:customers,email,'.$this->customer->id,
                 'password' => 'required|min:6',
             ];
             break; 

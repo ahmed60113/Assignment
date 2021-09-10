@@ -35,8 +35,8 @@ class CustomerApiController extends BaseController
      */
     public function index()
     {
-        // $logged = Auth::guard('customer')->user();
-        // $this->authorize('index', customer::class);
+         $logged = Auth::guard('customer')->user();
+         $this->authorize('index', customer::class);
         
         return customer::all();
         return CustomerResource::collection(Customer::all());

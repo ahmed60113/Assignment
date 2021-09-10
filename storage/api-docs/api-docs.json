@@ -609,6 +609,278 @@
                 ]
             }
         },
+        "/api/cart/addToCart": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "add new item",
+                "description": "add new customer",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "description": "Fill item Data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "prodId",
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "prodId": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "quantity": {
+                                        "type": "number",
+                                        "format": "email",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "order": {
+                                            "type": "string",
+                                            "example": "item data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cart/removeCart": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "add new item",
+                "description": "add new customer",
+                "operationId": "authLogin",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "order": {
+                                            "type": "string",
+                                            "example": "item data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cart/removeFromCart/{id}": {
+            "delete": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "add new item",
+                "description": "add new customer",
+                "operationId": "authLogin",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "order": {
+                                            "type": "string",
+                                            "example": "item data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cart/edit/{id}": {
+            "patch": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "edit cart",
+                "description": "edit cart",
+                "operationId": "authLogin",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Fill cart Data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "quantity": {
+                                        "type": "number",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "admin": {
+                                            "type": "string",
+                                            "example": "admin data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cart/showCart": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "add new item",
+                "description": "add new customer",
+                "operationId": "authLogin",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "order": {
+                                            "type": "string",
+                                            "example": "item data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/product/create": {
             "post": {
                 "tags": [
@@ -1447,6 +1719,34 @@
     },
     "components": {
         "schemas": {
+            "Order": {
+                "required": [
+                    "name",
+                    "title",
+                    "price"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "title": {
+                        "description": "product title",
+                        "type": "string",
+                        "example": "T-shirt"
+                    },
+                    "price": {
+                        "description": "product price",
+                        "type": "number",
+                        "example": "50"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "products"
+                }
+            },
             "product": {
                 "required": [
                     "name",
