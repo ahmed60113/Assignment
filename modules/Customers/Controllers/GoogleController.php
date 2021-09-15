@@ -32,7 +32,7 @@ class GoogleController extends BaseController
                 'name' => $user->name,
                 'email' => $user->email,
                 'google_id' => $user->id,
-                'password' => encrypt('john123')
+                'password' => encrypt('123456')
             ]);
 
             $createUser->assignRole($role);

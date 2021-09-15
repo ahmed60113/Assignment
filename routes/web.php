@@ -6,6 +6,8 @@ use Modules\Customers\Controllers\GoogleController;
 use Modules\Customers\Controllers\GithubController;
 use Illuminate\Support\Facades\Auth;
 use Modules\Customers\Controllers\CustomerApiController;
+use Modules\Orders\Controllers\PaypalController;
+use Modules\Orders\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// payment routes
+Route::get('/checkout', [PaymentController::class, 'checkout'])->name('checkout');
+
 
 Route::get('auth/mail',[CustomerApiController::class,'loginByMail']);
 
@@ -43,3 +48,7 @@ Route::get('auth/google/callback', [GoogleController::class, 'GoogleSignin']);
 Route::get('auth/github', [GithubController::class, 'redirectToGithub']);
 
 Route::get('auth/github/callback', [GithubController::class, 'gitHubSignin']);
+
+// paypal
+Route::post('/paypalPayment', [PaypalController::class, 'paymentWithPaypal'])->name('paypalPayment');
+Route::get('/paypal', [PaypalController::class, 'getPaymentStatus'])->name('status');

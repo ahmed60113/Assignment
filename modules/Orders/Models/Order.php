@@ -19,6 +19,13 @@ use Modules\Products\Models\product;
  */
 class Order extends Model
 {
+
+    const PAYMENT_TYPE_CACH = 'Cach';
+    const PAYMENT_TYPE_PAYPAL = 'Paypal';
+    const PAYMENT_TYPE_CREDIT = 'Credit';
+    const PAYMENT_STATUS_PENDING = 'Pending';
+    const PAYMENT_STATUS_DONE = 'Done';
+
     use HasFactory;
     /**
      * 

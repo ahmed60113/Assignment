@@ -14,7 +14,7 @@ use Spatie\Permission\Contracts\Role;
 class CustomerApiController extends BaseController
 {
     use ApiResponseTrait;
-
+  
     /**
      * @OA\Post(
      * path="/api/customer/index",
@@ -151,9 +151,11 @@ class CustomerApiController extends BaseController
      */
     public function loginByMail(CustomerRequest $request)
     {
+        Config::set('jwt.user','Modules\Customers\Models\customer' ); 
+		Config::set('auth.providers.users.model', \Modules\Customers\Models\customer::class);
        //return 'request is '.$request;
         $credentials = $request->only(['email', 'password']);
-        $token = Auth::guard('customer')->attempt($credentials);
+        $token = Auth::guard()->attempt($credentials);
         if (!$token) {
             return $this->apiResponse(400, 'invalid credentials');
         }

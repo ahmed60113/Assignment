@@ -44,7 +44,6 @@ return [
         'customer' => [
             'driver' => 'jwt',
             'provider' => 'customers',
-            'hash' => false,
         ], 
 
         'admin' => [

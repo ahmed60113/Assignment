@@ -37,7 +37,9 @@ class AuthJWT extends BaseMiddleware
                 return $this->ApiResponse(400, 'Authorization Token not found');
             }
         }
+        define("USER_DETAILS", $user);
         return $next($request);
+
     }
 }
 

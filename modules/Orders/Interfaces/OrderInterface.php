@@ -11,23 +11,23 @@ use Modules\Products\Models\product;
 
 interface OrderInterface
 {
-    public function index ();
+    public function index();
 
     public function create(OrderRequest $request);
 
-    public function paymentStatus(OrderRequest $request,Order $order);
+    public function paymentStatus(OrderRequest $request, Order $order);
 
-    public function orderStatus(OrderRequest $request,Order $order);
+    public function orderStatus(OrderRequest $request, Order $order);
 
     public function addToCart(OrderRequest $orde);
 
     public function removeFromCart(product $product);
 
-    public function editCart(OrderRequest $order , product $product);
+    public function editCart(OrderRequest $order, product $product);
 
-    public function showCart(); 
+    public function showCart();
 
-    public function showOrder (Order $order);
+    public function showOrder(Order $order);
 
     public function editOrder(OrderRequest $request, Order $order);
 }

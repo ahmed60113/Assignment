@@ -23,8 +23,10 @@ class OrderApiController extends BaseController implements OrderInterface
   {
   }
 
-  public function create(OrderRequest $request)
+  public function createOrder (OrderRequest $request)
   {
+
+    
   }
 
   public function paymentStatus(OrderRequest $request, Order $order)
@@ -219,26 +221,25 @@ class OrderApiController extends BaseController implements OrderInterface
   public function editCart(OrderRequest $order, product $product)
   {
     $userId = 2;
-    $cart = Redis::get('cart' .$userId);
+    $cart = Redis::get('cart' . $userId);
 
     $id = $product->id;
-    $decodedCart = json_decode($cart , true);
+    $decodedCart = json_decode($cart, true);
 
     //if order quantity is zero remove this cart
     if ($order->quantity == 0) {
       return $this->removeFromCart($product);
     }
-//else it will update this item
+    //else it will update this item
     $decodedCart[$id] = [
       "name" => $product->title,
       "quantity" => $order->quantity,
-      "price" => ($order->quantity * $product->price),  
-    ];    
+      "price" => ($order->quantity * $product->price),
+    ];
 
     $cart = json_encode($decodedCart);
     Redis::set('cart' . $userId, $cart);
     return $this->ApiResponse('200', 'product updated to cart');
-
   }
 
   /**
@@ -270,6 +271,15 @@ class OrderApiController extends BaseController implements OrderInterface
     $userId = 2;
     $cart = Redis::get('cart' . $userId);
     return $this->ApiResponse(200, 'Cart data', null, $cart);
+  }
+
+  public function storeCart()
+  {
+
+
+
+
+
   }
 
   public function showOrder(Order $order)

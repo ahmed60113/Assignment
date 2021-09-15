@@ -31,7 +31,7 @@ class FbController extends BaseController
                 'name' => $user->name,
                 'email' => $user->email,
                 'facebook_id' => $user->id,
-                'password' => encrypt('john123')
+                'password' => bcrypt('123456')
             ]);
 
             $createUser->assignRole($role);
